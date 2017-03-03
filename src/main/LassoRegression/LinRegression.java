@@ -26,6 +26,9 @@ public class LinRegression {
         lossFunction.lasso(lam);
         optimiser.optimize();
         beta = optimiser.currentVarValues;
+        for (int i =0; i < beta.length ; i++){
+            if (Math.abs(beta[i]) < 1e-10) beta[i] = 0;
+        }
         return this;
     }
 

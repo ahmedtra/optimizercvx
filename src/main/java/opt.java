@@ -6,8 +6,8 @@ import java.util.Arrays;
 public abstract class opt <T extends opt<T>> {
     int numOptVar;
 
-    protected double alpha = 0.01;
-    protected double tolerance= 0.001;
+    protected double alpha = 0.1;
+    protected double tolerance= 0.00001;
     protected Function functionOptimized;
     protected int iterations = 100000;
     protected double[] currentVarValues = new double[numOptVar];
