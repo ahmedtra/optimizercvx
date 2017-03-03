@@ -13,7 +13,7 @@ public class LinearRegressionExemple {
         Pair<double[][], double[]> data = readData("src\\main\\resources\\test_random_data.csv", 2, 4000);
         double[][] x = data.getFirst();
         double[] y = data.getSecond();
-        LinRegression  reg = new LinRegression(x, y).Regularisation(true).lasso(.001);
+        LinRegression  reg = new LinRegression(x, y).Regularisation(true).lasso(0.1);
 
         System.out.println(reg.stringify());
     }
