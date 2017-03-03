@@ -2,7 +2,7 @@
  * Created by ahmedtra on 2/25/2017.
  */
 abstract class LossFunctionLinRegression extends Function {
-    protected int numInput;
+
     protected int numObservations;
     protected boolean constant = false;
 
@@ -13,7 +13,7 @@ abstract class LossFunctionLinRegression extends Function {
     public LossFunctionLinRegression(double[][] x, double[] y){
         assert x.length == y.length;
         assert  y.length > 0;
-        numInput = x[0].length + 1;
+        numInput = x[0].length;
         numObservations = y.length;
         input = x;
         output = y;

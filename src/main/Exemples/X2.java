@@ -4,8 +4,10 @@
  * Created by ahmedtra on 2/25/2017.
  */
 public class X2 extends Function {
-    int numInput = 1;
-
+    public X2()
+    {
+        numInput = 1;
+    }
     public double value(double[] x){
         assert x.length == numInput;
 

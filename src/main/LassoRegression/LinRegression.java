@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Created by ahmedtra on 2/25/2017.
  */
@@ -6,24 +8,48 @@ public class LinRegression {
     private double[] beta;
     private cvxopt optimiser;
 
-    public LinRegression(double[][] x, double[] y){
-        lossFunction = new LossFunctionMSE(x,y);
+    public LinRegression(double[][] x, double[] y) {
+        lossFunction = new LossFunctionMSE(x, y);
+        beta = new double[x[0].length];
         optimiser = new cvxopt();
-        optimiser.setFuntion(lossFunction);
+        optimiser.setFuntion(lossFunction).setAlpha(0.001);
+//        optimiser.optimize();
+        beta = optimiser.currentVarValues;
+    }
+
+    public LinRegression Regularisation(boolean reg){
+        lossFunction.Regularisation(reg);
+        return this;
+    }
+
+    public LinRegression lasso(double lam){
+        lossFunction.lasso(lam);
         optimiser.optimize();
         beta = optimiser.currentVarValues;
-    };
+        return this;
+    }
 
-    public void addConstant(boolean constant){
+    public LinRegression ridge(double lam){
+        lossFunction.ridge(lam);
+        return this;
+    }
+
+    ;
+
+    public void addConstant(boolean constant) {
         lossFunction.addConstant(constant);
     }
 
-    public void updateBeta(){
+    public void updateBeta() {
         optimiser.optimize();
         beta = optimiser.currentVarValues;
     }
 
-    public double[] getBeta(){
+    public double[] getBeta() {
         return beta;
+    }
+
+    public String stringify() {
+        return optimiser.stringify();
     }
 }

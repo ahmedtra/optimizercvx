@@ -5,9 +5,9 @@
  */
 public class exampleX2 {
 
-    public void main(){
+    public static void main(String[] args){
         X2  func = new X2();
-        cvxopt optimizer = new cvxopt().setFuntion(func);
+        cvxopt optimizer = new cvxopt().setFuntion(func).setAlpha(0.0001);
 
         double minimum = optimizer.optimize();
         System.out.println(minimum);

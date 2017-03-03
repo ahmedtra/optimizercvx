@@ -3,6 +3,10 @@
  */
 public class cvxopt extends opt<cvxopt>{
 
+    public cvxopt(){
+        super();
+    }
+
     protected void oneStepOptimisation(){
         currentlValue = functionOptimized.value(currentVarValues);
         currentGrad = functionOptimized.grad(currentVarValues);
@@ -20,6 +24,7 @@ public class cvxopt extends opt<cvxopt>{
         for (int i = 0; i<iterations; i++){
             oneStepOptimisation();
             if (MathUtils.normL2(currentGrad) < tolerance) break;
+            System.out.println(stringify());
         }
         return currentlValue;
     }

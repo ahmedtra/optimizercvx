@@ -3,7 +3,7 @@
  * Created by ahmedtra on 2/25/2017.
  */
 public abstract class Function {
-    private int numInput;
+    protected int numInput;
 
     public abstract double value(double[] x);
 
