@@ -47,7 +47,7 @@ public class LossFunctionMSEExponetialWeigths extends LossFunctionLinRegression{
         double[] w = new double[numObservations];
 
         for(int i = numObservations-1; i>-1; i--){
-            w[i] = 1.0/(numObservations - i);
+            w[i] = 1.0/Math.sqrt(numObservations - i);
         }
 
         double sum = 0;
@@ -56,7 +56,7 @@ public class LossFunctionMSEExponetialWeigths extends LossFunctionLinRegression{
         }
 
         for(int i = numObservations-1; i>-1; i--){
-            w[i] /= sum;
+            w[i] /= sum / (double) numObservations;
         }
 
         return w;

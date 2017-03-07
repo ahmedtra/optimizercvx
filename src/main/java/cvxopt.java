@@ -33,7 +33,6 @@ public class cvxopt extends opt<cvxopt>{
             oneStepOptimisation();
             double diffValue = Math.abs(currentlValue- functionOptimized.value(currentVarValues));
             if (MathUtils.normL2(currentGrad) < tolerance || diffValue < tolerance) break;
-            System.out.println(stringify());
         }
         return currentlValue;
     }
