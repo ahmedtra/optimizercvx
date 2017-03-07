@@ -1,15 +1,13 @@
-import java.util.Arrays;
-
 /**
  * Created by ahmedtra on 2/25/2017.
  */
-public class LinRegression {
-    private LossFunctionMSE lossFunction;
+public class LinRegressionExponetialLocalWeights {
+    private LossFunctionMSEExponetialWeigths lossFunction;
     private double[] beta;
     private cvxopt optimiser;
 
-    public LinRegression(double[][] x, double[] y) {
-        lossFunction = new LossFunctionMSE(x, y);
+    public LinRegressionExponetialLocalWeights(double[][] x, double[] y) {
+        lossFunction = new LossFunctionMSEExponetialWeigths(x, y);
         beta = new double[x[0].length];
         optimiser = new cvxopt();
         optimiser.setFuntion(lossFunction).setAlpha(0.001);
@@ -17,12 +15,12 @@ public class LinRegression {
         beta = optimiser.currentVarValues;
     }
 
-    public LinRegression Regularisation(boolean reg){
+    public LinRegressionExponetialLocalWeights Regularisation(boolean reg){
         lossFunction.Regularisation(reg);
         return this;
     }
 
-    public LinRegression lasso(double lam){
+    public LinRegressionExponetialLocalWeights lasso(double lam){
         lossFunction.lasso(lam);
         optimiser.optimize();
         beta = optimiser.currentVarValues;
@@ -32,7 +30,7 @@ public class LinRegression {
         return this;
     }
 
-    public LinRegression ridge(double lam){
+    public LinRegressionExponetialLocalWeights ridge(double lam){
         lossFunction.ridge(lam);
         return this;
     }
